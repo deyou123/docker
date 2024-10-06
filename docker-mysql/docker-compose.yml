@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  mysql:
+    image: mysql:8 #镜像名称以及版本
+    restart: always #重启docker后该容器也重启
+    container_name: mysql #容器名称
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456 #指定用户密码
+      TZ: Asia/Shanghai
+    ports:
+      - 3306:3306 #本地端口号与容器内部端口号
+    volumes: #指定挂载目录
+      - ./mysql/datadir:/var/lib/mysql
+      - ./mysql/config/my.cnf:/etc/mysql/my.cnf
